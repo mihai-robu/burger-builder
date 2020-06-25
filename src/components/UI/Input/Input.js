@@ -4,12 +4,17 @@ import classes from './Input.module.css';
 const input = (props) => {
 
     let inputElement = null;
+    const inputClasses = [classes.InputElement];
+
+    if (props.invalid && props.shouldValidate && props.touched) {
+        inputClasses.push(classes.Invalid);
+    }
 
     switch (props.elementType) {
         case ('input'):
             inputElement = <input 
                 {...props.elementConfig} 
-                className={classes.InputElement} 
+                className={inputClasses.join(' ')} 
                 value={props.value}
                 onChange={props.changed}
                 />
@@ -17,7 +22,7 @@ const input = (props) => {
         case ('textarea'):
             inputElement = <textArea 
                 {...props.elementConfig} 
-                className={classes.InputElement} 
+                className={inputClasses.join(' ')} 
                 value={props.value}
                 onChange={props.changed}
                 />
@@ -25,7 +30,7 @@ const input = (props) => {
         case ('select'):
             inputElement = (
                 <select 
-                    className={classes.InputElement} 
+                    className={inputClasses.join(' ')} 
                     value={props.value}  
                     onChange={props.changed}
                 >
@@ -38,16 +43,22 @@ const input = (props) => {
         default:
             inputElement = <input 
                 {...props.elementConfig} 
-                className={classes.InputElement} 
+                className={inputClasses.join(' ')} 
                 value={props.value}
                 onChange={props.changed}
                 />
     }
 
+    let validationError = null;
+    if (props.invalid && props.touched) {
+        validationError = <p className={classes.ValidationError}>Please enter a valid value!</p>;
+    }
+    
     return (
         <div className={classes.Input}>
             <label className={classes.Label}>{props.label}</label>
             {inputElement}
+            {validationError}
         </div>
     )
 }
