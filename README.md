@@ -4,6 +4,9 @@ This project was part of the Udemy course ["React - The Complete Guide"](https:/
 
 The main concepts of React were covered and libraries such as Axios and Redux were used. Firebase was used to store burger and order data. This is the class-based implementation of the project - a hooks-based version was also made.
 
+https://www.loom.com/share/212029f674a7462ba057f18c489d2ccf
+
+
 ## Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
